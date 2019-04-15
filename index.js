@@ -7,12 +7,12 @@ app.get("/", function(req, res) {
 });
 
 io.on("connection", function(socket) {
-  socket.on("chat message", function(msg) {
-    //console.log("message: " + msg);
-    io.emit("chat message", msg);
+  socket.on("SEND_MESSAGE", function(msg) {
+    console.log(msg);
+    io.emit("RECEIVE_MESSAGE", msg);
   });
 });
 
-http.listen(3000, function() {
-  console.log("listening on *:3000");
+http.listen(5001, function() {
+  console.log("listening on *:5001");
 });
